@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{c80ef945-ce52-eef4-7b1b-8d0316060a06}</ProjectGuid>
+    <ProjectGuid>{9b3b6dae-92cb-43d9-eac4-2eff9ad568b3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -36,8 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\MouseLook.cs" />
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\FPSController.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -228,7 +227,7 @@
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.16f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-        <HintPath>J:/Documents/Unity Projects/3D Sandbox/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
+        <HintPath>J:/Documents/GitHub/3D-Sandbox/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.16f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -576,31 +575,31 @@
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.16f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>J:/Documents/Unity Projects/3D Sandbox/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>J:/Documents/GitHub/3D-Sandbox/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>J:/Documents/Unity Projects/3D Sandbox/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>J:/Documents/GitHub/3D-Sandbox/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>J:/Documents/Unity Projects/3D Sandbox/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>J:/Documents/GitHub/3D-Sandbox/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>J:/Documents/Unity Projects/3D Sandbox/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+        <HintPath>J:/Documents/GitHub/3D-Sandbox/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>J:/Documents/Unity Projects/3D Sandbox/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+        <HintPath>J:/Documents/GitHub/3D-Sandbox/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>J:/Documents/Unity Projects/3D Sandbox/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+        <HintPath>J:/Documents/GitHub/3D-Sandbox/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>J:/Documents/Unity Projects/3D Sandbox/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+        <HintPath>J:/Documents/GitHub/3D-Sandbox/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>J:/Documents/Unity Projects/3D Sandbox/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+        <HintPath>J:/Documents/GitHub/3D-Sandbox/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>J:/Documents/Unity Projects/3D Sandbox/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+        <HintPath>J:/Documents/GitHub/3D-Sandbox/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
