@@ -43,116 +43,116 @@ public class PlayerController : MonoBehaviour
     //     }
     // }
 
-    // CharacterController characterController;
-    // public float MovementSpeed = 1f;
-    // public float Gravity = 9.8f;
-    // private float velocity = 0;
+    CharacterController characterController;
+    public float MovementSpeed = 1f;
+    public float Gravity = 9.8f;
+    private float velocity = 0;
 
-    // private void Start()
+    private void Start()
+    {
+        characterController = GetComponent<CharacterController>();
+    }
+
+    void Update()
+    {
+        // player movement - forward, backward, left, right
+        float horizontal = Input.GetAxis("Horizontal") * MovementSpeed;
+        float vertical = Input.GetAxis("Vertical") * MovementSpeed;
+
+        Camera camera = Camera.main;
+        Vector3 forward = camera.transform.forward;
+        Vector3 right = camera.transform.right;
+
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 desiredMoveDirection = forward * vertical + right * horizontal;
+
+        characterController.Move(desiredMoveDirection * MovementSpeed);//) * Time.deltaTime);
+
+
+        // characterController.Move((Vector3.right * horizontal + Vector3.forward * vertical) * Time.deltaTime);
+
+        // Gravity
+        // if (characterController.isGrounded)
+        // {
+        //     velocity = 0;
+        // }
+        // else
+        // {
+        velocity -= Gravity * Time.deltaTime;
+        characterController.Move(new Vector3(0, velocity, 0));
+        // }
+    }
+
+    // private float speed = 100f;
+    // private float walkSpeed = 0.5f;
+    // private float runSpeed = 10f;
+
+    // private float gravity = 8;
+
+    // private Rigidbody body;
+    // // private Animator anim;
+
+    // private Vector3 direction;
+    // float percent;
+
+    // private void Awake()
     // {
-    //     characterController = GetComponent<CharacterController>();
+    //     body = GetComponent<Rigidbody>();
+    //     // anim = GetComponent<Animator>();
     // }
 
-    // void Update()
+    // private void FixedUpdate()
     // {
-    //     // player movement - forward, backward, left, right
-    //     float horizontal = Input.GetAxis("Horizontal") * MovementSpeed;
-    //     float vertical = Input.GetAxis("Vertical") * MovementSpeed;
-
-    //     Camera camera = Camera.main;
-    //     Vector3 forward = camera.transform.forward;
-    //     Vector3 right = camera.transform.right;
-
-    //     forward.y = 0f;
-    //     right.y = 0f;
-    //     forward.Normalize();
-    //     right.Normalize();
-
-    //     Vector3 desiredMoveDirection = forward * vertical + right * horizontal;
-
-    //     characterController.Move(desiredMoveDirection * MovementSpeed * Time.deltaTime);
 
 
-    //     // characterController.Move((Vector3.right * horizontal + Vector3.forward * vertical) * Time.deltaTime);
 
-    //     // // Gravity
-    //     // if (characterController.isGrounded)
-    //     // {
-    //     //     velocity = 0;
-    //     // }
-    //     // else
-    //     // {
-    //     //     velocity -= Gravity * Time.deltaTime;
-    //     //     characterController.Move(new Vector3(0, velocity, 0));
-    //     // }
+    //     Move();
+
+    //     if (direction != Vector3.zero)
+    //     {
+    //         HandleRotation();
+    //     }
+
+    //     // HandleAnimations();
     // }
 
-    private float speed = 100f;
-    private float walkSpeed = 0.5f;
-    private float runSpeed = 10f;
+    // public void Move()
+    // {
+    //     float h = Input.GetAxisRaw("Horizontal");
+    //     float v = Input.GetAxisRaw("Vertical");
 
-    private float gravity = 8;
+    //     direction = new Vector3(h, 0, v);
 
-    private Rigidbody body;
-    // private Animator anim;
+    //     direction = direction.normalized;
 
-    private Vector3 direction;
-    float percent;
+    //     if (Input.GetButton("Fire1"))
+    //     {
+    //         percent = runSpeed * direction.magnitude;
+    //         speed = 200f;
+    //     }
+    //     else
+    //     {
+    //         percent = walkSpeed * direction.magnitude;
+    //         speed = 100f;
+    //     }
 
-    private void Awake()
-    {
-        body = GetComponent<Rigidbody>();
-        // anim = GetComponent<Animator>();
-    }
+    //     //CONVERT direction from local to world relative to camera
+    //     body.velocity = Camera.main.transform.TransformDirection(direction) * speed * Time.deltaTime;
+    // }
 
-    private void FixedUpdate()
-    {
+    // public void HandleRotation()
+    // {
+    //     float targetRotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+    //     Quaternion lookAt = Quaternion.Slerp(transform.rotation,
+    //                         Quaternion.Euler(0, targetRotation, 0),
+    //                         0.5f);
+    //     body.rotation = lookAt;
 
-
-
-        Move();
-
-        if (direction != Vector3.zero)
-        {
-            HandleRotation();
-        }
-
-        // HandleAnimations();
-    }
-
-    public void Move()
-    {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-
-        direction = new Vector3(h, 0, v);
-
-        direction = direction.normalized;
-
-        if (Input.GetButton("Fire1"))
-        {
-            percent = runSpeed * direction.magnitude;
-            speed = 200f;
-        }
-        else
-        {
-            percent = walkSpeed * direction.magnitude;
-            speed = 100f;
-        }
-
-        //CONVERT direction from local to world relative to camera
-        body.velocity = Camera.main.transform.TransformDirection(direction) * speed * Time.deltaTime;
-    }
-
-    public void HandleRotation()
-    {
-        float targetRotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
-        Quaternion lookAt = Quaternion.Slerp(transform.rotation,
-                            Quaternion.Euler(0, targetRotation, 0),
-                            0.5f);
-        body.rotation = lookAt;
-
-    }
+    // }
 
 
     // public void HandleAnimations()
