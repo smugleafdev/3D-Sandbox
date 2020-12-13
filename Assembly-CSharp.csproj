@@ -38,7 +38,11 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\FPSController.cs" />
      <Compile Include="Assets\Scripts\EnemyHealthManager.cs" />
-     <Compile Include="Assets\Scripts\Shooting.cs" />
+     <Compile Include="Assets\Scripts\ShootBullet.cs" />
+     <Compile Include="Assets\Scripts\ShootMagic.cs" />
+     <Compile Include="Assets\Scripts\BulletScript.cs" />
+     <Compile Include="Assets\Scripts\MagicBulletScript.cs" />
+     <Compile Include="Assets\Scripts\DespawnProjectile.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
