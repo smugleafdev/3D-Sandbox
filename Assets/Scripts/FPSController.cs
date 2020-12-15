@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FPSController : MonoBehaviour
-{
+public class FPSController : MonoBehaviour {
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
     public float jumpSpeed = 8.0f;
@@ -19,10 +18,9 @@ public class FPSController : MonoBehaviour
 
     [HideInInspector]
     public bool canMove = true;
-    private int click = 0;
+    private bool doubleTapped = false;
 
-    void Start()
-    {
+    void Start() {
         characterController = GetComponent<CharacterController>();
 
         // Lock cursor
@@ -30,8 +28,22 @@ public class FPSController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void Update()
-    {
+    void Update() {
+
+        HandleMovement();
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (!doubleTapped) {
+                StartCoroutine(DoubleTapDelayTimer());
+            } else {
+                UnityEditor.EditorApplication.isPlaying = false;
+                // Application.Quit();
+            }
+        }
+
+    }
+
+    private void HandleMovement() {
         // We are grounded, so recalculate move direction based on axes
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
@@ -42,20 +54,16 @@ public class FPSController : MonoBehaviour
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
-        {
+        if (Input.GetButton("Jump") && canMove && characterController.isGrounded) {
             moveDirection.y = jumpSpeed;
-        }
-        else
-        {
+        } else {
             moveDirection.y = movementDirectionY;
         }
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
         // as an acceleration (ms^-2)
-        if (!characterController.isGrounded)
-        {
+        if (!characterController.isGrounded) {
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
@@ -63,32 +71,18 @@ public class FPSController : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
 
         // Player and Camera rotation
-        if (canMove)
-        {
+        if (canMove) {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             emitter.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            click++;
-            StartCoroutine(ClickTime());
-
-            if (click > 1)
-            {
-                UnityEditor.EditorApplication.isPlaying = false;
-                // Application.Quit();
-            }
-        }
-
     }
 
-    IEnumerator ClickTime()
-    {
+    IEnumerator DoubleTapDelayTimer() {
+        doubleTapped = true;
         yield return new WaitForSeconds(0.25f);
-        click = 0;
+        doubleTapped = false;
     }
 }
