@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour
-{
+public class BulletScript : MonoBehaviour {
     // public float deathTime = 4f;
 
-    void Start()
-    {
+    void Start() {
         // Destroy(gameObject, deathTime);
     }
 
-    void Update()
-    {
+    void Update() {
     }
 }

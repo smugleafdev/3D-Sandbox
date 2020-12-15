@@ -2096,5 +2096,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2ab11ef2399fed4f801bc413b00672f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6512743690337271512, guid: 44dc79ded2a6c374c9ff456b15ba7407, type: 3}
-  speed: 1000
+  magicBullet: {fileID: 6512743690337271512, guid: 44dc79ded2a6c374c9ff456b15ba7407, type: 3}
