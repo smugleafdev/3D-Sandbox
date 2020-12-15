@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class MagicBulletScript : MonoBehaviour
 {
-    public float speed = 100f;
+    public float speed = 10f;
 
-    void Start()
-    {
-
-    }
+    void Start() { }
 
     void Update()
     {
-        transform.Translate(transform.forward * speed * Time.deltaTime);
+        // transform.Translate(transform.forward * speed * Time.deltaTime);
+        transform.position += transform.forward * speed * Time.deltaTime;
     }
 }

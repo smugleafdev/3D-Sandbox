@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class ShootMagic : MonoBehaviour
 {
-    public GameObject bullet;
-    public float speed = 100f;
+    public GameObject magicBullet;
+    // public float speed = 100f;
 
-    void Start()
-    {
-
-    }
+    void Start() { }
 
     void Update()
     {
@@ -24,7 +21,7 @@ public class ShootMagic : MonoBehaviour
     {
         Vector3 forward = transform.TransformDirection(Vector3.forward);
 
-        GameObject instBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+        GameObject instBullet = Instantiate(magicBullet, transform.position, transform.rotation);
         Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
         // instBulletRigidBody.AddForce(forward * speed);
     }

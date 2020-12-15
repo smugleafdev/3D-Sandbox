@@ -19,6 +19,7 @@ public class FPSController : MonoBehaviour
 
     [HideInInspector]
     public bool canMove = true;
+    private int click = 0;
 
     void Start()
     {
@@ -70,5 +71,24 @@ public class FPSController : MonoBehaviour
             emitter.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            click++;
+            StartCoroutine(ClickTime());
+
+            if (click > 1)
+            {
+                UnityEditor.EditorApplication.isPlaying = false;
+                // Application.Quit();
+            }
+        }
+
+    }
+
+    IEnumerator ClickTime()
+    {
+        yield return new WaitForSeconds(0.25f);
+        click = 0;
     }
 }

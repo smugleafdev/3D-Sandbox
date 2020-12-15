@@ -21,7 +21,7 @@ public class ShootBullet : MonoBehaviour
     {
         Vector3 forward = transform.TransformDirection(Vector3.forward);
 
-        GameObject instBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+        GameObject instBullet = Instantiate(bullet, transform.position, transform.rotation);
         Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
         instBulletRigidBody.AddForce(forward * speed);
     }
