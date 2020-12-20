@@ -128,7 +128,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathTime: 4
-  timer: 0
 --- !u!114 &5846995636044917032
 MonoBehaviour:
   m_ObjectHideFlags: 0

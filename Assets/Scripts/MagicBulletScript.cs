@@ -11,7 +11,7 @@ public class MagicBulletScript : MonoBehaviour {
         trail = GetComponent<TrailRenderer>();
     }
 
-    private void OnEnable() {
+    void OnEnable() {
         trail.Clear();
     }
 
