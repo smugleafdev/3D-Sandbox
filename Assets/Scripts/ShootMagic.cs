@@ -17,8 +17,16 @@ public class ShootMagic : MonoBehaviour {
     void Fire() {
         Vector3 forward = transform.TransformDirection(Vector3.forward);
 
-        GameObject instBullet = Instantiate(magicBullet, transform.position, transform.rotation);
-        Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
+        // GameObject instBullet = Instantiate(magicBullet, transform.position, transform.rotation);
+        // GameObject instBullet = ObjectPooler.SharedInstance.GetPooledObject();
+        GameObject instBullet = ObjectPooler.SharedInstance.GetPooledObject(transform.position, transform.rotation);
+
+        // if (instBullet != null) {
+        //     magicBullet.transform.position = transform.position;
+        //     magicBullet.transform.rotation = transform.rotation;
+        //     magicBullet.SetActive(true);
+        // }
+        //Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
         // instBulletRigidBody.AddForce(forward * speed);
     }
 }
