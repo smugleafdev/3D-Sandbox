@@ -18,10 +18,10 @@ public class DespawnProjectile : MonoBehaviour {
     }
 
     void Deactivate() {
-        gameObject.SetActive(false);
         Rigidbody rigidBody = gameObject.GetComponent<Rigidbody>();
         rigidBody.angularVelocity = Vector3.zero;
         rigidBody.velocity = Vector3.zero;
+        ObjectPool.StashObjectByTag(gameObject);
     }
 
     IEnumerator DespawnAfterTime() {

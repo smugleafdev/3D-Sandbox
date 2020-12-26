@@ -6,14 +6,8 @@ public class BulletScript : MonoBehaviour {
 
     private TrailRenderer trail;
 
-    void Start() {
+    void OnDisable() {
         trail = GetComponent<TrailRenderer>();
-    }
-
-    void OnEnable() {
         trail.Clear();
-    }
-
-    void Update() {
     }
 }

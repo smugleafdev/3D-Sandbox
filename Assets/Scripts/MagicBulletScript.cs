@@ -7,11 +7,8 @@ public class MagicBulletScript : MonoBehaviour {
     public float speed = 10f;
     private TrailRenderer trail;
 
-    void Start() {
+    void OnDisable() {
         trail = GetComponent<TrailRenderer>();
-    }
-
-    void OnEnable() {
         trail.Clear();
     }
 

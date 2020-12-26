@@ -14,7 +14,7 @@ public class EnemyHealthManager : MonoBehaviour {
         enemyCurrentHealth = enemyMaxHealth;
         // hpText = GameObject.FindWithTag("HPText");
         hp = GetComponent<Text>();
-        hp.text = 36.ToString();
+        // hp.text = 36.ToString();
     }
 
     void Update() {
@@ -26,7 +26,7 @@ public class EnemyHealthManager : MonoBehaviour {
             HandleDeath();
         }
 
-        hp.text = enemyCurrentHealth.ToString();
+        // hp.text = enemyCurrentHealth.ToString();
     }
 
     public void DamageEnemy(int damage) {

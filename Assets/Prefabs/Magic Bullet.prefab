@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 795627997140977098}
   m_Layer: 0
   m_Name: Magic Bullet
-  m_TagString: Untagged
+  m_TagString: magicBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
