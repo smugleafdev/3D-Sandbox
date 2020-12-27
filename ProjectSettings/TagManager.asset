@@ -8,6 +8,7 @@ TagManager:
   - HPOnScreen
   - bullet
   - magicBullet
+  - magicBullet2
   layers:
   - Default
   - TransparentFX

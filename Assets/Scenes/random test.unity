@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 65130771}
   - component: {fileID: 65130770}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: LeftHandCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -330,12 +330,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd544ab2d0cf23949ba2b60223e3e5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 1224413040}
+  equippedSlot: 0
   walkingSpeed: 7.5
   runningSpeed: 11.5
   jumpSpeed: 8
   gravity: 20
-  playerCamera: {fileID: 1224413040}
-  emitter: {fileID: 887238060}
   lookSpeed: 2
   lookXLimit: 45
   canMove: 1
@@ -1118,7 +1118,7 @@ GameObject:
   - component: {fileID: 887238061}
   - component: {fileID: 887238062}
   m_Layer: 0
-  m_Name: Emitter
+  m_Name: RightEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1132,7 +1132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887238060}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.486}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1536639754}
@@ -1150,7 +1150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe618844b07a32b459ba59098008cf77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 7083457019512145853, guid: 9655a566b7b3067408e1cca5b9eaa81b, type: 3}
+  equippedBullets:
+  - {fileID: 7083457019512145853, guid: 9655a566b7b3067408e1cca5b9eaa81b, type: 3}
+  - {fileID: 6512743690337271512, guid: 44dc79ded2a6c374c9ff456b15ba7407, type: 3}
+  - {fileID: 3172712494683693689, guid: 5bf92c8bdbd381342a2fbe1bc358fabd, type: 3}
   speed: 1000
 --- !u!1 &889729584
 GameObject:
@@ -1654,7 +1657,7 @@ GameObject:
   - component: {fileID: 1536639756}
   - component: {fileID: 1536639755}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: RightHandCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2112,7 +2115,7 @@ GameObject:
   - component: {fileID: 2092473493}
   - component: {fileID: 2092473494}
   m_Layer: 0
-  m_Name: Emitter
+  m_Name: LeftEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2126,7 +2129,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092473492}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.486}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 65130769}
