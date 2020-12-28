@@ -1,14 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
+
+[Serializable]
+public class KeyCodeIntPair {
+    [SerializeField]
+    public KeyCode keyCode;
+    [SerializeField]
+    public int keyInt;
+}
 
 public class FPSController : MonoBehaviour {
 
     public Camera playerCamera;
-    // public GameObject emitter;
-    public int equippedSlot;
-    // [HideInInspector]
-    // public bool equippedSlotChangedFlag = false;
+    private int equippedSlot;
+    private bool equippedSlotChangedFlag = false;
+    private ElementalSpellManager spellEmitterManager;
 
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
@@ -16,6 +24,8 @@ public class FPSController : MonoBehaviour {
     public float gravity = 20.0f;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
+
+    public KeyCodeIntPair[] equipKeyCodes;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
@@ -31,18 +41,22 @@ public class FPSController : MonoBehaviour {
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        spellEmitterManager = transform.GetComponentInChildren<ElementalSpellManager>();
     }
 
     void Update() {
 
         HandleMovement();
 
-        if (Input.GetKeyDown(KeyCode.Keypad1)) {
-            equippedSlot = 1;
-        } else if (Input.GetKeyDown(KeyCode.Keypad2)) {
-            equippedSlot = 2;
-        } else if (Input.GetKeyDown(KeyCode.Keypad3)) {
-            equippedSlot = 3;
+        int currentEquipSlot = equippedSlot;
+        equippedSlot = equipKeyCodes.FirstOrDefault(ekc => Input.GetKeyDown(ekc.keyCode))?.keyInt ?? -1;
+        if (currentEquipSlot != equippedSlot && equippedSlot != -1) {
+            spellEmitterManager.Equip(equippedSlot);
+        }
+
+        if (Input.GetMouseButtonDown(1)) {
+            spellEmitterManager.Fire();
         } else if (Input.GetKeyDown(KeyCode.Escape)) {
             if (!doubleTapped) {
                 StartCoroutine(DoubleTapDelayTimer());

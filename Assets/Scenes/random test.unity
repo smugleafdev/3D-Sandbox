@@ -331,13 +331,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 1224413040}
-  equippedSlot: 0
   walkingSpeed: 7.5
   runningSpeed: 11.5
   jumpSpeed: 8
   gravity: 20
   lookSpeed: 2
   lookXLimit: 45
+  equipKeyCodes:
+  - keyCode: 257
+    keyInt: 1
+  - keyCode: 258
+    keyInt: 2
+  - keyCode: 259
+    keyInt: 3
   canMove: 1
 --- !u!143 &250789065
 CharacterController:
@@ -1230,8 +1236,9 @@ GameObject:
   m_Component:
   - component: {fileID: 887238061}
   - component: {fileID: 887238062}
+  - component: {fileID: 887238063}
   m_Layer: 0
-  m_Name: RightEmitter
+  m_Name: RightEmitterEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1267,7 +1274,24 @@ MonoBehaviour:
   - {fileID: 7083457019512145853, guid: 9655a566b7b3067408e1cca5b9eaa81b, type: 3}
   - {fileID: 6512743690337271512, guid: 44dc79ded2a6c374c9ff456b15ba7407, type: 3}
   - {fileID: 3172712494683693689, guid: 5bf92c8bdbd381342a2fbe1bc358fabd, type: 3}
+  currentBullet: {fileID: 7083457019512145853, guid: 9655a566b7b3067408e1cca5b9eaa81b, type: 3}
   speed: 1000
+--- !u!114 &887238063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887238060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d861c997812d6c045b320066cd5541f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellsToEquip:
+  - {fileID: 4994315341938224555, guid: b80e8a72b306c6c4ea1b5f3027e6dbd7, type: 3}
+  - {fileID: 5362489427391739837, guid: 558f9d7959bfa3e429128a5792de6209, type: 3}
+  - {fileID: 392833017759169888, guid: 6d06b223fe2e72f4b8f7deb131a6babe, type: 3}
 --- !u!1 &889729584
 GameObject:
   m_ObjectHideFlags: 0
