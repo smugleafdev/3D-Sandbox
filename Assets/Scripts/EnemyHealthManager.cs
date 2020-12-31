@@ -2,6 +2,7 @@
 
 public class EnemyHealthManager : MonoBehaviour {
 
+    public GameObject flyText;
     public int enemyMaxHealth;
     private int enemyCurrentHealth;
     private bool shouldDie = false;
@@ -28,7 +29,17 @@ public class EnemyHealthManager : MonoBehaviour {
 
     public void DamageEnemy(int damage) {
         enemyCurrentHealth -= damage;
-        // flytext
+        ShowFlyText($"- {damage}", Color.red);
+    }
+
+    private void ShowFlyText(string effect, Color color) {
+        if (flyText != null) {
+            float yOffset = 1f;
+
+            GameObject textObj = Instantiate(flyText, new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z), Quaternion.identity);
+            textObj.GetComponent<TextMesh>().text = effect;
+            textObj.GetComponent<TextMesh>().color = color;
+        }
     }
 
     private void HandleDeath() {
