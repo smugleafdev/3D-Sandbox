@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnEffect : MonoBehaviour {
 
     public float spawnEffectTime = 2;
-    public float pause = 1;
+    // public float pause = 1;
     public AnimationCurve fadeIn;
 
     ParticleSystem ps;
@@ -14,33 +14,32 @@ public class SpawnEffect : MonoBehaviour {
 
     int shaderProperty;
 
-	void Start ()
-    {
+    bool startAnim = false;
+
+    void Start() {
         shaderProperty = Shader.PropertyToID("_cutoff");
         _renderer = GetComponent<Renderer>();
-        ps = GetComponentInChildren <ParticleSystem>();
+        ps = GetComponentInChildren<ParticleSystem>();
 
         var main = ps.main;
         main.duration = spawnEffectTime;
 
-        ps.Play();
-
+        // ps.Play();
     }
-	
-	void Update ()
-    {
-        if (timer < spawnEffectTime + pause)
-        {
+
+    public void StartAnim() {
+        startAnim = true;
+        ps.Play();
+    }
+
+    void Update() {
+        if (startAnim && timer < spawnEffectTime) {
             timer += Time.deltaTime;
-        }
-        else
-        {
-            ps.Play();
-            timer = 0;
+            // } else {
+            //     ps.Play();
+            //     timer = 0;
         }
 
-
-        _renderer.material.SetFloat(shaderProperty, fadeIn.Evaluate( Mathf.InverseLerp(0, spawnEffectTime, timer)));
-        
+        _renderer.material.SetFloat(shaderProperty, fadeIn.Evaluate(Mathf.InverseLerp(0, spawnEffectTime, timer)));
     }
 }

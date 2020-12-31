@@ -10,11 +10,14 @@ public class EnemyHealthManager : MonoBehaviour {
 
     public Text hp;
 
+    SpawnEffect deathEffect;
+
     void Start() {
         enemyCurrentHealth = enemyMaxHealth;
         // hpText = GameObject.FindWithTag("HPText");
         hp = GetComponent<Text>();
         // hp.text = 36.ToString();
+        deathEffect = GetComponent<SpawnEffect>();
     }
 
     void Update() {
@@ -34,7 +37,8 @@ public class EnemyHealthManager : MonoBehaviour {
     }
 
     private void HandleDeath() {
-        Destroy(gameObject);
+        deathEffect.StartAnim();
+        // Destroy(gameObject);
         // TODO: Restart spawner stuff probably go here
     }
 
