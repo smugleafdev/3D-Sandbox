@@ -1,20 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour {
+
     public int enemyMaxHealth;
     private int enemyCurrentHealth;
     private bool shouldDie = false;
 
-    public Text hp;
+    public GameObject hpObj;
+    TextMesh hpText;
 
     void Start() {
         enemyCurrentHealth = enemyMaxHealth;
-        // hpText = GameObject.FindWithTag("HPText");
-        hp = GetComponent<Text>();
-        // hp.text = 36.ToString();
+        hpText = GetComponentInChildren<TextMesh>();
     }
 
     void Update() {
@@ -26,11 +23,12 @@ public class EnemyHealthManager : MonoBehaviour {
             HandleDeath();
         }
 
-        // hp.text = enemyCurrentHealth.ToString();
+        hpText.text = enemyCurrentHealth.ToString();
     }
 
     public void DamageEnemy(int damage) {
         enemyCurrentHealth -= damage;
+        // flytext
     }
 
     private void HandleDeath() {
@@ -42,8 +40,8 @@ public class EnemyHealthManager : MonoBehaviour {
         enemyCurrentHealth = enemyMaxHealth;
     }
 
-    void OnGUI() {
-        GUI.Label(new Rect(10, 10, 100, 20), "Enemy HP: " + enemyCurrentHealth.ToString());
-    }
-
+    // Save this snippet for later
+    // void OnGUI() {
+    //     GUI.Label(new Rect(10, 10, 100, 20), "Enemy HP: " + enemyCurrentHealth.ToString());
+    // }
 }

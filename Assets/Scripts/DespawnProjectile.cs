@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DespawnProjectile : MonoBehaviour {
@@ -12,7 +11,7 @@ public class DespawnProjectile : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag == "Enemy") {
-            collision.gameObject.GetComponent<EnemyHealthManager>().DamageEnemy(5);
+            collision.gameObject.GetComponentInParent<EnemyHealthManager>().DamageEnemy(5);
         }
         Deactivate();
     }

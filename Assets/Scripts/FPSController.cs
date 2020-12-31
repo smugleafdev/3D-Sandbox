@@ -51,13 +51,13 @@ public class FPSController : MonoBehaviour {
         }
         HandleCursor();
 
-        if (Input.GetKeyDown(KeyCode.BackQuote)) {
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
-
         if (!pauseMenu.gameIsPaused) {
             HandleMovement();
             HandleSpells();
+        }
+
+        if (Input.GetKeyDown(KeyCode.BackQuote)) {
+            UnityEditor.EditorApplication.isPlaying = false;
         }
     }
 
