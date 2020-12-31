@@ -16,8 +16,9 @@ public class FPSController : MonoBehaviour {
     public Camera playerCamera;
     private int equippedSlot;
     private bool equippedSlotChangedFlag = false;
+    private bool pausedFlag = false;
     private ElementalSpellManager spellEmitterManager;
-    private PlayerPauseMenu pauseMenu;
+    private PlayerPauseManager pauseMenu;
 
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
@@ -37,44 +38,46 @@ public class FPSController : MonoBehaviour {
     private bool doubleTapped = false;
 
     void Start() {
-        pauseMenu = GetComponent<PlayerPauseMenu>();
+        pauseMenu = GetComponent<PlayerPauseManager>();
         characterController = GetComponent<CharacterController>();
-
-        // Lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
         spellEmitterManager = transform.GetComponentInChildren<ElementalSpellManager>();
+
+        LockCursor();
     }
 
     void Update() {
+        if (Input.GetKeyDown(KeyCode.P)) {
+            pauseMenu.HandlePause();
+        }
+        HandleCursor();
+
         if (Input.GetKeyDown(KeyCode.BackQuote)) {
             UnityEditor.EditorApplication.isPlaying = false;
         }
 
         if (!pauseMenu.gameIsPaused) {
             HandleMovement();
+            HandleSpells();
+        }
+    }
 
-            int currentEquipSlot = equippedSlot;
-            equippedSlot = equipKeyCodes.FirstOrDefault(ekc => Input.GetKeyDown(ekc.keyCode))?.keyInt ?? -1;
-            if (currentEquipSlot != equippedSlot && equippedSlot != -1) {
-                spellEmitterManager.Equip(equippedSlot);
-            }
+    private void LockCursor() {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
-            if (Input.GetMouseButtonDown(1)) {
-                spellEmitterManager.Fire();
-            } else if (Input.GetKeyDown(KeyCode.Escape)) {
-                //     if (!doubleTapped) {
-                //         StartCoroutine(DoubleTapDelayTimer());
-                //     } else {
-                //         UnityEditor.EditorApplication.isPlaying = false;
-                // }
+    private void UnlockCursor() {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 
-                pauseMenu.PauseGame();
-            }
-        } else {
-            if (Input.GetKeyDown(KeyCode.Escape)) {
-                pauseMenu.ResumeGame();
+    private void HandleCursor() {
+        if (pausedFlag != pauseMenu.gameIsPaused) {
+            pausedFlag = pauseMenu.gameIsPaused;
+            if (pausedFlag) {
+                UnlockCursor();
+            } else {
+                LockCursor();
             }
         }
     }
@@ -114,6 +117,27 @@ public class FPSController : MonoBehaviour {
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
     }
+
+    private void HandleSpells() {
+        int currentEquipSlot = equippedSlot;
+        equippedSlot = equipKeyCodes.FirstOrDefault(ekc => Input.GetKeyDown(ekc.keyCode))?.keyInt ?? -1;
+        if (currentEquipSlot != equippedSlot && equippedSlot != -1) {
+            spellEmitterManager.Equip(equippedSlot);
+        }
+
+        if (Input.GetMouseButtonDown(1)) {
+            spellEmitterManager.Fire();
+        }
+    }
+
+    // Double tap example here in case I forget and need it later
+    // if (Input.GetKeyDown(KeyCode.Escape) {
+    //     if (!doubleTapped) {
+    //         StartCoroutine(DoubleTapDelayTimer());
+    //     } else {
+    //         UnityEditor.EditorApplication.isPlaying = false;
+    //     }
+    // }
 
     // IEnumerator DoubleTapDelayTimer() {
     //     doubleTapped = true;

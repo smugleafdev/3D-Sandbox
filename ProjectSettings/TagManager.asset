@@ -9,6 +9,7 @@ TagManager:
   - bullet
   - magicBullet
   - magicBullet2
+  - ShowOnPause
   layers:
   - Default
   - TransparentFX
