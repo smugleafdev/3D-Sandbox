@@ -17,6 +17,7 @@ public class FPSController : MonoBehaviour {
     private int equippedSlot;
     private bool equippedSlotChangedFlag = false;
     private ElementalSpellManager spellEmitterManager;
+    private PlayerPauseMenu pauseMenu;
 
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
@@ -36,6 +37,7 @@ public class FPSController : MonoBehaviour {
     private bool doubleTapped = false;
 
     void Start() {
+        pauseMenu = GetComponent<PlayerPauseMenu>();
         characterController = GetComponent<CharacterController>();
 
         // Lock cursor
@@ -46,22 +48,33 @@ public class FPSController : MonoBehaviour {
     }
 
     void Update() {
-
-        HandleMovement();
-
-        int currentEquipSlot = equippedSlot;
-        equippedSlot = equipKeyCodes.FirstOrDefault(ekc => Input.GetKeyDown(ekc.keyCode))?.keyInt ?? -1;
-        if (currentEquipSlot != equippedSlot && equippedSlot != -1) {
-            spellEmitterManager.Equip(equippedSlot);
+        if (Input.GetKeyDown(KeyCode.BackQuote)) {
+            UnityEditor.EditorApplication.isPlaying = false;
         }
 
-        if (Input.GetMouseButtonDown(1)) {
-            spellEmitterManager.Fire();
-        } else if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (!doubleTapped) {
-                StartCoroutine(DoubleTapDelayTimer());
-            } else {
-                UnityEditor.EditorApplication.isPlaying = false;
+        if (!pauseMenu.gameIsPaused) {
+            HandleMovement();
+
+            int currentEquipSlot = equippedSlot;
+            equippedSlot = equipKeyCodes.FirstOrDefault(ekc => Input.GetKeyDown(ekc.keyCode))?.keyInt ?? -1;
+            if (currentEquipSlot != equippedSlot && equippedSlot != -1) {
+                spellEmitterManager.Equip(equippedSlot);
+            }
+
+            if (Input.GetMouseButtonDown(1)) {
+                spellEmitterManager.Fire();
+            } else if (Input.GetKeyDown(KeyCode.Escape)) {
+                //     if (!doubleTapped) {
+                //         StartCoroutine(DoubleTapDelayTimer());
+                //     } else {
+                //         UnityEditor.EditorApplication.isPlaying = false;
+                // }
+
+                pauseMenu.PauseGame();
+            }
+        } else {
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                pauseMenu.ResumeGame();
             }
         }
     }
@@ -102,9 +115,9 @@ public class FPSController : MonoBehaviour {
         }
     }
 
-    IEnumerator DoubleTapDelayTimer() {
-        doubleTapped = true;
-        yield return new WaitForSeconds(0.25f);
-        doubleTapped = false;
-    }
+    // IEnumerator DoubleTapDelayTimer() {
+    //     doubleTapped = true;
+    //     yield return new WaitForSeconds(0.25f);
+    //     doubleTapped = false;
+    // }
 }
