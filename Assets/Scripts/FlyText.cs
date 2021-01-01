@@ -5,8 +5,8 @@ using UnityEngine;
 public class FlyText : MonoBehaviour {
 
     float despawnTime = 1f;
-    float flySpeed = 0.01f;
-    float textIncreaseAmoumt = 0.01f;
+    float flySpeed = 1f;
+    float textIncreaseAmoumt = 1f;
     TextMesh textMesh;
 
     void Start() {
@@ -15,7 +15,7 @@ public class FlyText : MonoBehaviour {
     }
 
     private void Update() {
-        transform.Translate(0, flySpeed, 0);
-        textMesh.characterSize += textIncreaseAmoumt;
+        transform.Translate(0, flySpeed * Time.deltaTime, 0);
+        textMesh.characterSize += textIncreaseAmoumt * Time.deltaTime;
     }
 }
