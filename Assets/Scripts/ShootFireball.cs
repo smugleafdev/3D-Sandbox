@@ -6,8 +6,7 @@ public class ShootFireball : CastBehavior {
     public float speed = 100f;
 
     public override void Cast() {
-        // TODO: Improve fireball's firey effect and turn off the sphere mesh again
-        // Add light to fireball, or at least remove the shadow
+        // TODO: Improve fireball's fiery effect and turn off the sphere mesh again
         Vector3 forward = transform.TransformDirection(Vector3.forward);
 
         if (fireball != null) {

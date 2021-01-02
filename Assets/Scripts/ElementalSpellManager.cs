@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class ElementalSpellManager : MonoBehaviour {
 
-    public GameObject[] spellsToEquip;
-    private List<GameObject> equippableSpells = new List<GameObject>();
-    private GameObject equippedSpell;
-    private CastBehavior castScript;
-    private int equippedSlot;
+    [SerializeField] GameObject[] spellsToEquip;
+    List<GameObject> equippableSpells = new List<GameObject>();
+    GameObject equippedSpell;
+    CastBehavior castScript;
+    int equippedSlot;
 
     void Start() {
         foreach (GameObject spellEmitter in spellsToEquip) {

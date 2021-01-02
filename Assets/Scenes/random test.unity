@@ -1493,7 +1493,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 887238061}
-  - component: {fileID: 887238062}
   - component: {fileID: 887238063}
   m_Layer: 0
   m_Name: RightEmitterEmitter
@@ -1516,20 +1515,6 @@ Transform:
   m_Father: {fileID: 1536639754}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &887238062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 887238060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe618844b07a32b459ba59098008cf77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
-  speed: 1000
 --- !u!114 &887238063
 MonoBehaviour:
   m_ObjectHideFlags: 0
