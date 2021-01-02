@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flyText: {fileID: 5678654939922039984, guid: eb0a8dfb16ca1ce4ca7686083f0cfbf1, type: 3}
-  enemyMaxHealth: 15
+  enemyMaxHealth: 50
   hpObj: {fileID: 7579955060729136243}
 --- !u!1 &7579955060729136243
 GameObject:
@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 7579955060729136242}
   - component: {fileID: 7579955060729136240}
   - component: {fileID: 7579955060729136241}
+  - component: {fileID: 7085593078869814829}
   m_Layer: 0
   m_Name: HpText
   m_TagString: Untagged
@@ -143,6 +144,18 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &7085593078869814829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7579955060729136243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 359db4f14be588542ad383326a5154e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7579955061258451142
 GameObject:
   m_ObjectHideFlags: 0
