@@ -2,8 +2,8 @@
 
 public class TextBillboarding : MonoBehaviour {
 
-    void Update() {
-        transform.LookAt(Camera.main.transform);
+    private void OnWillRenderObject() {
+        transform.LookAt(Camera.current.transform);
         transform.Rotate(0, 180f, 0);
     }
 }
