@@ -10,6 +10,7 @@ TagManager:
   - magicBullet
   - magicBullet2
   - ShowOnPause
+  - PlayerBody
   layers:
   - Default
   - TransparentFX
