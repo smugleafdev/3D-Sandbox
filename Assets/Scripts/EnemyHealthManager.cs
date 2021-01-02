@@ -29,19 +29,7 @@ public class EnemyHealthManager : MonoBehaviour {
 
     public void DamageEnemy(int damage) {
         enemyCurrentHealth -= damage;
-        ShowFlyText($"- {damage}", Color.red);
-    }
-
-    private void ShowFlyText(string effect, Color color) {
-        if (flyText != null) {
-            float yOffset = 1f;
-            float xOffset = Random.Range(-0.5f, 0.5f);
-            float zOffset = Random.Range(-0.5f, 0.5f);
-
-            GameObject textObj = Instantiate(flyText, new Vector3(transform.position.x + xOffset, transform.position.y + yOffset, transform.position.z + zOffset), Quaternion.identity);
-            textObj.GetComponent<TextMesh>().text = effect;
-            textObj.GetComponent<TextMesh>().color = color;
-        }
+        ObjectUtils.ShowFlyText(flyText, transform.position, $"-{damage}");
     }
 
     private void HandleDeath() {
