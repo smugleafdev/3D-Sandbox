@@ -5,6 +5,7 @@ public class EnemyBehaviorManager : MonoBehaviour {
 
     Transform target;
     [SerializeField] float turnSpeed = 25f;
+
     EnemyAttackManager enemyEmitterManager;
     [SerializeField] GameObject bullet;
     [SerializeField] float bulletSpeed = 1f;
@@ -28,6 +29,8 @@ public class EnemyBehaviorManager : MonoBehaviour {
     }
 
     private void AttackTarget() {
+        Vector3 targetCenter = new Vector3(target.position.x, target.position.y + 1, target.position.z);
+        enemyEmitterManager.transform.LookAt(targetCenter);
         enemyEmitterManager.Attack();
     }
 

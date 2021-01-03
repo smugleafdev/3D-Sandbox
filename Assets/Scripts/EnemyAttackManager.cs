@@ -8,7 +8,7 @@ public class EnemyAttackManager : MonoBehaviour {
     private void Start() {
         GameObject emitterInstance = GameObject.Instantiate(emitter, transform.position, transform.rotation);
         emitterInstance.transform.parent = transform;
-        castScript = emitterInstance.GetComponent<CastBehavior>();
+        castScript = emitterInstance.GetComponentInChildren<CastBehavior>();
     }
 
     public void Attack() {
