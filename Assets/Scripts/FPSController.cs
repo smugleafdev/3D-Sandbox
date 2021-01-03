@@ -14,18 +14,19 @@ public class KeyCodeIntPair {
 public class FPSController : MonoBehaviour {
 
     public Camera playerCamera;
+    [SerializeField] GameObject flyText;
     private int equippedSlot;
     private bool equippedSlotChangedFlag = false;
     private bool pausedFlag = false;
     private ElementalSpellManager spellEmitterManager;
     private PlayerPauseManager pauseMenu;
 
-    public float walkingSpeed = 7.5f;
-    public float runningSpeed = 11.5f;
-    public float jumpSpeed = 8.0f;
-    public float gravity = 20.0f;
-    public float lookSpeed = 2.0f;
-    public float lookXLimit = 45.0f;
+    [SerializeField] float walkingSpeed = 7.5f;
+    [SerializeField] float runningSpeed = 11.5f;
+    [SerializeField] float jumpSpeed = 8.0f;
+    [SerializeField] float gravity = 20.0f;
+    [SerializeField] float lookSpeed = 2.0f;
+    [SerializeField] float lookXLimit = 45.0f;
 
     public KeyCodeIntPair[] equipKeyCodes;
 
@@ -128,6 +129,11 @@ public class FPSController : MonoBehaviour {
         if (Input.GetMouseButtonDown(1)) {
             spellEmitterManager.Fire();
         }
+    }
+
+    public void DamagePlayer(int damage) {
+        // currentHealth -= damage;
+        ObjectUtils.ShowFlyText(flyText, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), $"-{damage}");
     }
 
     // Double tap example here in case I forget and need it later

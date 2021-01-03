@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class DespawnProjectile : MonoBehaviour {
 
-    public float deathTime = 4f;
+    [SerializeField] float deathTime = 4f;
+    [SerializeField] int damage = 0;
 
     private void OnEnable() {
         StartCoroutine("DespawnAfterTime");
@@ -11,7 +12,9 @@ public class DespawnProjectile : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag == "Enemy") {
-            collision.gameObject.GetComponentInParent<EnemyHealthManager>().DamageEnemy(5);
+            collision.gameObject.GetComponentInParent<EnemyHealthManager>().DamageEnemy(damage);
+        } else if (collision.gameObject.tag == "Player") {
+            collision.gameObject.GetComponentInParent<FPSController>().DamagePlayer(damage);
         }
         Deactivate();
     }

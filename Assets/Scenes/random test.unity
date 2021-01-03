@@ -464,6 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 1224413040}
+  flyText: {fileID: 5678654939922039984, guid: eb0a8dfb16ca1ce4ca7686083f0cfbf1, type: 3}
   walkingSpeed: 7.5
   runningSpeed: 11.5
   jumpSpeed: 8
