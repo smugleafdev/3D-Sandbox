@@ -7,7 +7,6 @@ public class EnemyBehaviorManager : MonoBehaviour {
     EnemyHealthManager enemyHealthManager;
     EnemyAttackManager enemyEmitterManager;
     [SerializeField] float turnSpeed = 3f;
-    [SerializeField] GameObject bullet;
     [SerializeField] float bulletSpeed = 1f;
     [SerializeField] float attackSpeed = 3f;
     [SerializeField] float lookRange = 10f;
