@@ -12,7 +12,7 @@ public class DespawnProjectile : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag == "Enemy") {
-            collision.gameObject.GetComponentInParent<EnemyHealthManager>().DamageEnemy(damage);
+            collision.gameObject.GetComponentInParent<EnemyHealthManager>().DamageEnemy(damage, collision);
         } else if (collision.gameObject.tag == "Player") {
             collision.gameObject.GetComponentInParent<FPSController>().DamagePlayer(damage);
         }

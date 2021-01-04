@@ -6,6 +6,7 @@ public class EnemyBehaviorManager : MonoBehaviour {
     Transform target;
     [SerializeField] float turnSpeed = 25f;
 
+    EnemyHealthManager enemyHealthManager;
     EnemyAttackManager enemyEmitterManager;
     [SerializeField] GameObject bullet;
     [SerializeField] float bulletSpeed = 1f;
@@ -13,12 +14,15 @@ public class EnemyBehaviorManager : MonoBehaviour {
 
     void Start() {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        enemyHealthManager = transform.GetComponent<EnemyHealthManager>();
         enemyEmitterManager = transform.GetComponentInChildren<EnemyAttackManager>();
         StartCoroutine("AttackTargetDelay");
     }
 
     void Update() {
-        FaceTarget();
+        if (!enemyHealthManager.isDead) {
+            FaceTarget();
+        }
     }
 
     private void FaceTarget() {
@@ -36,7 +40,9 @@ public class EnemyBehaviorManager : MonoBehaviour {
 
     IEnumerator AttackTargetDelay() {
         yield return new WaitForSeconds(attackSpeed);
-        AttackTarget();
-        StartCoroutine("AttackTargetDelay");
+        if (!enemyHealthManager.isDead) {
+            AttackTarget();
+            StartCoroutine("AttackTargetDelay");
+        }
     }
 }
