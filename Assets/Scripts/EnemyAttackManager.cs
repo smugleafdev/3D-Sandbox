@@ -3,9 +3,9 @@
 public class EnemyAttackManager : MonoBehaviour {
 
     [SerializeField] GameObject emitter;
-    private CastBehavior castScript;
+    CastBehavior castScript;
 
-    private void Start() {
+    void Start() {
         GameObject emitterInstance = GameObject.Instantiate(emitter, transform.position, transform.rotation);
         emitterInstance.transform.parent = transform;
         castScript = emitterInstance.GetComponentInChildren<CastBehavior>();

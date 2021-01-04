@@ -6,7 +6,7 @@ public class DespawnProjectile : MonoBehaviour {
     [SerializeField] float deathTime = 4f;
     [SerializeField] int damage = 0;
 
-    private void OnEnable() {
+    void OnEnable() {
         StartCoroutine("DespawnAfterTime");
     }
 

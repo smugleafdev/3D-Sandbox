@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MagicBulletScript : MonoBehaviour {
 
-    public float speed = 10f;
-    private TrailRenderer trail;
+    [SerializeField] float speed = 10f;
+    TrailRenderer trail;
 
     void OnDisable() {
         trail = GetComponent<TrailRenderer>();

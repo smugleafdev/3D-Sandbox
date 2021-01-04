@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class ObjectPool {
 
-    private static Dictionary<string, Stack<GameObject>> pools = new Dictionary<string, Stack<GameObject>>();
+    static Dictionary<string, Stack<GameObject>> pools = new Dictionary<string, Stack<GameObject>>();
 
     public static GameObject GetObjectByTag(string tag) {
         if (!pools.TryGetValue(tag, out var pool) || pool.Count == 0) {

@@ -2,8 +2,8 @@
 
 public static class ObjectUtils {
 
-    public static Color damageColor = new Color32(255, 20, 20, 255);
-    public static Color healColor = new Color32(0, 255, 0, 255);
+    static Color damageColor = new Color32(255, 20, 20, 255);
+    static Color healColor = new Color32(0, 255, 0, 255);
 
     public static GameObject GetOrInstantiate(GameObject prefab, Vector3 pos, Quaternion rot) {
         var obj = ObjectPool.GetObjectByTag(prefab.tag) ?? GameObject.Instantiate(prefab);
@@ -22,7 +22,7 @@ public static class ObjectUtils {
         textObj.GetComponent<TextMesh>().color = GetEffectColor(effect);
     }
 
-    private static Color GetEffectColor(string effect) {
+    static Color GetEffectColor(string effect) {
         if (effect.Contains("-")) {
             return damageColor;
         } else if (effect.Contains("+")) {

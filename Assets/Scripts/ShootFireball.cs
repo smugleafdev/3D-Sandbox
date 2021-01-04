@@ -2,8 +2,8 @@
 
 public class ShootFireball : CastBehavior {
 
-    public GameObject fireball;
-    public float speed = 100f;
+    [SerializeField] GameObject fireball;
+    [SerializeField] float speed = 100f;
 
     public override void Cast() {
         // TODO: Improve fireball's fiery effect and turn off the sphere mesh again

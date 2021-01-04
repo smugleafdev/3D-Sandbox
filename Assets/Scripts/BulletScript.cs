@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour {
 
-    private TrailRenderer trail;
+    TrailRenderer trail;
 
     void OnDisable() {
         trail = GetComponent<TrailRenderer>();

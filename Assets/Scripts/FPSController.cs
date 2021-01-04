@@ -13,13 +13,13 @@ public class KeyCodeIntPair {
 
 public class FPSController : MonoBehaviour {
 
-    public Camera playerCamera;
+    [SerializeField] Camera playerCamera;
     [SerializeField] GameObject flyText;
-    private int equippedSlot;
-    private bool equippedSlotChangedFlag = false;
-    private bool pausedFlag = false;
-    private ElementalSpellManager spellEmitterManager;
-    private PlayerPauseManager pauseMenu;
+    int equippedSlot;
+    bool equippedSlotChangedFlag = false;
+    bool pausedFlag = false;
+    ElementalSpellManager spellEmitterManager;
+    PlayerPauseManager pauseMenu;
 
     [SerializeField] float walkingSpeed = 7.5f;
     [SerializeField] float runningSpeed = 11.5f;
@@ -28,15 +28,14 @@ public class FPSController : MonoBehaviour {
     [SerializeField] float lookSpeed = 2.0f;
     [SerializeField] float lookXLimit = 45.0f;
 
-    public KeyCodeIntPair[] equipKeyCodes;
+    [SerializeField] KeyCodeIntPair[] equipKeyCodes;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
 
-    [HideInInspector]
-    public bool canMove = true;
-    private bool doubleTapped = false;
+    bool canMove = true;
+    bool doubleTapped = false;
 
     void Start() {
         pauseMenu = GetComponent<PlayerPauseManager>();
@@ -62,17 +61,17 @@ public class FPSController : MonoBehaviour {
         }
     }
 
-    private void LockCursor() {
+    void LockCursor() {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    private void UnlockCursor() {
+    void UnlockCursor() {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 
-    private void HandleCursor() {
+    void HandleCursor() {
         if (pausedFlag != pauseMenu.gameIsPaused) {
             pausedFlag = pauseMenu.gameIsPaused;
             if (pausedFlag) {
@@ -83,7 +82,7 @@ public class FPSController : MonoBehaviour {
         }
     }
 
-    private void HandleMovement() {
+    void HandleMovement() {
         // We are grounded, so recalculate move direction based on axes
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
@@ -119,7 +118,7 @@ public class FPSController : MonoBehaviour {
         }
     }
 
-    private void HandleSpells() {
+    void HandleSpells() {
         int currentEquipSlot = equippedSlot;
         equippedSlot = equipKeyCodes.FirstOrDefault(ekc => Input.GetKeyDown(ekc.keyCode))?.keyInt ?? -1;
         if (currentEquipSlot != equippedSlot && equippedSlot != -1) {

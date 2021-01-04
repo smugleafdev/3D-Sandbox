@@ -25,14 +25,14 @@ public class EnemyBehaviorManager : MonoBehaviour {
         }
     }
 
-    private void FaceTarget() {
+    void FaceTarget() {
         // Debug.Log("Facing " + target);
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
     }
 
-    private void AttackTarget() {
+    void AttackTarget() {
         Vector3 targetCenter = new Vector3(target.position.x, target.position.y + 1, target.position.z);
         enemyEmitterManager.transform.LookAt(targetCenter);
         enemyEmitterManager.Attack();

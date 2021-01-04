@@ -3,22 +3,22 @@
 public class EnemyHealthManager : MonoBehaviour {
 
     Rigidbody enemyRigidbody;
-    public GameObject flyText;
-    public int enemyMaxHealth;
-    private int enemyCurrentHealth;
-    private bool shouldDie = false;
+    [SerializeField] GameObject flyText;
+    [SerializeField] int enemyMaxHealth;
+    int enemyCurrentHealth;
+    bool shouldDie = false;
     [HideInInspector] public bool isDead = false;
-    private TextMesh hpText;
-    private Vector3 collisionImpulse;
-    private ContactPoint contact;
+    TextMesh hpText;
+    Vector3 collisionImpulse;
+    ContactPoint contact;
 
-    private void Start() {
+    void Start() {
         enemyCurrentHealth = enemyMaxHealth;
         enemyRigidbody = GetComponent<Rigidbody>();
         hpText = GetComponentInChildren<TextMesh>();
     }
 
-    private void Update() {
+    void Update() {
         if (isDead) {
             HandleDeath();
         }
@@ -26,7 +26,7 @@ public class EnemyHealthManager : MonoBehaviour {
         hpText.text = enemyCurrentHealth.ToString();
     }
 
-    private void FixedUpdate() {
+    void FixedUpdate() {
         if (collisionImpulse != Vector3.zero) {
             // TODO: This force isn't quite right, but it's close.
             // Running the collision naturally, it's weaker than this hit.
@@ -48,12 +48,12 @@ public class EnemyHealthManager : MonoBehaviour {
         ObjectUtils.ShowFlyText(flyText, transform.position, $"-{damage}");
     }
 
-    private void HandleDeath() {
+    void HandleDeath() {
         Destroy(gameObject, 3f);
         // TODO: Restart spawner stuff probably go here
     }
 
-    private void SetMaxHealth() {
+    void SetMaxHealth() {
         enemyCurrentHealth = enemyMaxHealth;
     }
 

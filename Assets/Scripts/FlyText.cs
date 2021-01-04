@@ -12,7 +12,7 @@ public class FlyText : MonoBehaviour {
         Destroy(gameObject, despawnTime);
     }
 
-    private void Update() {
+    void Update() {
         transform.Translate(0, flySpeed * Time.deltaTime, 0);
         textMesh.characterSize += textIncreaseAmoumt * Time.deltaTime;
     }

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShootBullet : MonoBehaviour {
 
-    public GameObject bullet;
-    public float speed = 100f;
-    private int equippedSlot;
+    [SerializeField] GameObject bullet;
+    [SerializeField] float speed = 100f;
+    int equippedSlot;
 
     void Update() {
         if (Input.GetMouseButtonDown(1)) {
