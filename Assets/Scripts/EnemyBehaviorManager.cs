@@ -4,13 +4,15 @@ using UnityEngine;
 public class EnemyBehaviorManager : MonoBehaviour {
 
     Transform target;
-    [SerializeField] float turnSpeed = 25f;
-
     EnemyHealthManager enemyHealthManager;
     EnemyAttackManager enemyEmitterManager;
+    [SerializeField] float turnSpeed = 3f;
     [SerializeField] GameObject bullet;
     [SerializeField] float bulletSpeed = 1f;
     [SerializeField] float attackSpeed = 3f;
+    [SerializeField] float lookRange = 10f;
+    [SerializeField] float attackRange = 5f;
+    bool canAttack, targetPerceived, targetInVisibleRange, targetInAttackRange;
 
     void Start() {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -20,29 +22,45 @@ public class EnemyBehaviorManager : MonoBehaviour {
     }
 
     void Update() {
-        if (!enemyHealthManager.isDead) {
-            FaceTarget();
-        }
+        CalculateRanges();
+        FaceTarget();
+        AttackTarget();
     }
 
     void FaceTarget() {
-        // Debug.Log("Facing " + target);
-        Vector3 direction = (target.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
+        if (!enemyHealthManager.isDead && targetInVisibleRange) {
+            // Debug.Log("Facing " + target);
+            Vector3 direction = (target.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
+        }
     }
 
     void AttackTarget() {
-        Vector3 targetCenter = new Vector3(target.position.x, target.position.y + 1, target.position.z);
-        enemyEmitterManager.transform.LookAt(targetCenter);
-        enemyEmitterManager.Attack();
+        if (canAttack && targetInAttackRange && targetPerceived) {
+            Vector3 targetCenter = new Vector3(target.position.x, target.position.y + 1, target.position.z);
+            enemyEmitterManager.transform.LookAt(targetCenter);
+            enemyEmitterManager.Attack();
+            StartCoroutine("AttackTargetDelay");
+            canAttack = false;
+        }
     }
 
     IEnumerator AttackTargetDelay() {
         yield return new WaitForSeconds(attackSpeed);
         if (!enemyHealthManager.isDead) {
-            AttackTarget();
-            StartCoroutine("AttackTargetDelay");
+            canAttack = true;
         }
+    }
+
+    void CalculateRanges() {
+        int playerMask = 1 << LayerMask.NameToLayer("PlayerLayer");
+        // TODO: Replace below (million years from now) with raycast to platform center, rather than player ("target")
+        float distance = Vector3.Distance(target.position, transform.position);
+        targetInVisibleRange = distance < lookRange;
+        targetInAttackRange = distance < attackRange;
+        targetPerceived = Physics.Raycast(transform.position, (target.position - transform.position), lookRange);
+        // WIP don't look //Physics.RaycastAll(transform.position, (target.position - transform.position), lookRange, playerMask).Length > 0;
+        // TODO: targetPerceived = nothing in the way of a shot allowed except other players
     }
 }

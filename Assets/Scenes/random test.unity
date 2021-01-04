@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 250789065}
   - component: {fileID: 250789064}
   - component: {fileID: 250789067}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -478,7 +478,6 @@ MonoBehaviour:
     keyInt: 2
   - keyCode: 259
     keyInt: 3
-  canMove: 1
 --- !u!143 &250789065
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2258,8 +2257,8 @@ GameObject:
   - component: {fileID: 1443907737}
   - component: {fileID: 1443907740}
   - component: {fileID: 1443907739}
-  m_Layer: 0
-  m_Name: Capsule (player body)
+  m_Layer: 9
+  m_Name: PlayerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
