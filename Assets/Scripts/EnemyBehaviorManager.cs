@@ -9,8 +9,8 @@ public class EnemyBehaviorManager : MonoBehaviour {
     [SerializeField] float turnSpeed = 3f;
     [SerializeField] float bulletSpeed = 1f;
     [SerializeField] float attackSpeed = 3f;
-    [SerializeField] float lookRange = 10f;
-    [SerializeField] float attackRange = 5f;
+    [SerializeField] float lookRange = 10f; // 
+    [SerializeField] float attackRange = 5f; // Might want 50f eventually
     bool canAttack, targetPerceived, targetInVisibleRange, targetInAttackRange;
 
     void Start() {

@@ -205,11 +205,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: 3
-  bullet: {fileID: 7083457019512145853, guid: 9655a566b7b3067408e1cca5b9eaa81b, type: 3}
   bulletSpeed: 1
   attackSpeed: 3
-  lookRange: 10
-  attackRange: 5
+  lookRange: 30
+  attackRange: 15
 --- !u!54 &4694178694562551241
 Rigidbody:
   m_ObjectHideFlags: 0
