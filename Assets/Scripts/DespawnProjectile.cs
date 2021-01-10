@@ -11,10 +11,14 @@ public class DespawnProjectile : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == "Enemy") {
+        string tag = collision.gameObject.tag;
+        if (tag == "Enemy") {
             collision.gameObject.GetComponentInParent<EnemyHealthManager>().DamageEnemy(damage, collision);
-        } else if (collision.gameObject.tag == "Player") {
+        } else if (tag == "Player") {
             collision.gameObject.GetComponentInParent<FPSController>().DamagePlayer(damage);
+            ObjectUtils.AddShotHit();
+        } else if (tag == "BulletEnemy" && transform.gameObject.tag == "BulletEnemy") {
+            ObjectUtils.SubtractBulletCollision();
         }
         Deactivate();
     }
