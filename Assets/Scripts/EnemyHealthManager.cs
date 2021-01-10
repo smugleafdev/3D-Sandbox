@@ -6,7 +6,7 @@ public class EnemyHealthManager : MonoBehaviour {
     [SerializeField] GameObject flyText;
     [SerializeField] int enemyMaxHealth;
     int enemyCurrentHealth;
-    bool shouldDie = false;
+    // bool shouldDie = false;
     [HideInInspector] public bool isDead = false;
     TextMesh hpText;
     Vector3 collisionImpulse;

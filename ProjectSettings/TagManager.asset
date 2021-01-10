@@ -11,6 +11,8 @@ TagManager:
   - magicBullet2
   - ShowOnPause
   - PlayerBody
+  - BulletPlayer
+  - BulletEnemy
   layers:
   - Default
   - TransparentFX
@@ -21,10 +23,10 @@ TagManager:
   - 
   - 
   - Post-proc
-  - PlayerLayer
-  - 
-  - 
-  - 
+  - Players
+  - Enemies
+  - PlayerProjectiles
+  - EnemyProjectiles
   - 
   - 
   - 

@@ -7,7 +7,7 @@ public class EnemyBehaviorManager : MonoBehaviour {
     EnemyHealthManager enemyHealthManager;
     EnemyAttackManager enemyEmitterManager;
     [SerializeField] float turnSpeed = 3f;
-    [SerializeField] float bulletSpeed = 1f;
+    // [SerializeField] float bulletSpeed = 1f;
     [SerializeField] float attackSpeed = 3f;
     [SerializeField] float lookRange = 10f; // 
     [SerializeField] float attackRange = 5f; // Might want 50f eventually
@@ -36,9 +36,7 @@ public class EnemyBehaviorManager : MonoBehaviour {
     }
 
     void AttackTarget() {
-        if (canAttack && targetInAttackRange && targetPerceived) {
-            Vector3 targetCenter = new Vector3(target.position.x, target.position.y + 1, target.position.z);
-            enemyEmitterManager.transform.LookAt(targetCenter);
+        if (canAttack && targetInAttackRange && targetPerceived && !enemyHealthManager.isDead && enemyEmitterManager != null) {
             enemyEmitterManager.Attack();
             StartCoroutine("AttackTargetDelay");
             canAttack = false;
@@ -54,11 +52,12 @@ public class EnemyBehaviorManager : MonoBehaviour {
 
     void CalculateRanges() {
         int playerMask = 1 << LayerMask.NameToLayer("PlayerLayer");
+        Vector3 targetCenter = new Vector3(target.position.x, target.position.y + 1f, target.position.z);
         // TODO: Replace below (million years from now) with raycast to platform center, rather than player ("target")
-        float distance = Vector3.Distance(target.position, transform.position);
+        float distance = Vector3.Distance(targetCenter, transform.position);
         targetInVisibleRange = distance < lookRange;
         targetInAttackRange = distance < attackRange;
-        targetPerceived = Physics.Raycast(transform.position, (target.position - transform.position), lookRange);
+        targetPerceived = Physics.Raycast(transform.position, (targetCenter - transform.position), lookRange);
         // WIP don't look //Physics.RaycastAll(transform.position, (target.position - transform.position), lookRange, playerMask).Length > 0;
         // TODO: targetPerceived = nothing in the way of a shot allowed except other players
     }

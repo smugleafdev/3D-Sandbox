@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4836820766463606219}
   - component: {fileID: 6865436003446438565}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Emitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20356b35b8b8da54786c30d9bf2b3055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireball: {fileID: 7083457019512145853, guid: 9655a566b7b3067408e1cca5b9eaa81b, type: 3}
+  fireball: {fileID: 2332287501885027580, guid: 6dda75284bdbe7a4f8aa049edcfe240d, type: 3}
   speed: 500
 --- !u!1 &3289888633843640760
 GameObject:
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 3289888633843640767}
   - component: {fileID: 3289888633843640765}
   - component: {fileID: 3289888633843640766}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireBallHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4866,7 +4866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3392213335394824045}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyEmitterFireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}

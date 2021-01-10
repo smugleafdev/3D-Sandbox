@@ -15,7 +15,7 @@ public class FPSController : MonoBehaviour {
     [SerializeField] Camera playerCamera;
     [SerializeField] GameObject flyText;
     int equippedSlot;
-    bool equippedSlotChangedFlag = false;
+    // bool equippedSlotChangedFlag = false;
     bool pausedFlag = false;
     ElementalSpellManager spellEmitterManager;
     PlayerPauseManager pauseMenu;
@@ -34,7 +34,7 @@ public class FPSController : MonoBehaviour {
     float rotationX = 0;
 
     bool canMove = true;
-    bool doubleTapped = false;
+    // bool doubleTapped = false;
 
     void Start() {
         pauseMenu = GetComponent<PlayerPauseManager>();

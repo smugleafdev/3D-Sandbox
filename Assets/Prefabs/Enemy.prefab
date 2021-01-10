@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8100781244839176177}
   - component: {fileID: 536085667317826372}
   - component: {fileID: 6332345676907364725}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyLeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8272490442074151782}
   - component: {fileID: 5734243789941177740}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce62d57d64175445a91d5a1df079305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObj: {fileID: 0}
   emitter: {fileID: 8007556993767083582, guid: 2edb41fa66244014fa5f38b0392cd262, type: 3}
 --- !u!1 &7579955060354718716
 GameObject:
@@ -151,7 +152,7 @@ GameObject:
   - component: {fileID: 7579955060354718706}
   - component: {fileID: 4995832387729325916}
   - component: {fileID: 4694178694562551241}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -205,10 +206,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: 3
-  bulletSpeed: 1
   attackSpeed: 3
   lookRange: 30
-  attackRange: 15
+  attackRange: 30
 --- !u!54 &4694178694562551241
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 7579955060729136240}
   - component: {fileID: 7579955060729136241}
   - component: {fileID: 7085593078869814829}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 7579955061258451194}
   - component: {fileID: 7579955061258451195}
   - component: {fileID: 7579955061258451140}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Capsule
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 7988323097748929409}
   - component: {fileID: 7149812164367686248}
   - component: {fileID: 3780900417824658072}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyRightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
