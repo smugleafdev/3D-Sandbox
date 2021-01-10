@@ -13,7 +13,7 @@ public class EnemyAttackManager : MonoBehaviour {
     CastBehavior castScript;
 
     float distance;
-    float offset = 12f;
+    // float offset = 12f;
 
     Vector3 aimAt;
 
@@ -53,10 +53,10 @@ public class EnemyAttackManager : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        Vector3 targetInitPosition = target.position;
         targetCurrentPos = target.position;
-        float targetDistance = Vector3.Distance(targetCurrentPos, targetLastPos);
-        float targetVelocity = targetDistance / Time.fixedDeltaTime;
+        targetCurrentPos.y += 1f;
+        // float targetDistance = Vector3.Distance(targetCurrentPos, targetLastPos);
+        // float targetVelocity = targetDistance / Time.fixedDeltaTime;
 
         myVelocity = Vector3.Distance(transform.position, myLastPos) / Time.fixedDeltaTime;
 
@@ -81,11 +81,11 @@ public class EnemyAttackManager : MonoBehaviour {
     }
 
     // TODO: Need to make the bullet speed either known, or set from higher in the chain than the Shoot.cs
-    void OnGUI() {
-        GUI.Label(new Rect(10, offset * 4, 100, 20), string.Format("Distance: {0}", distance));
-        GUI.Label(new Rect(10, offset * 5, 1000, 20), string.Format("My vel: {0}", myVel));
-        GUI.Label(new Rect(10, offset * 6, 1000, 20), string.Format("Target vel: {0}", targVel));
-    }
+    // void OnGUI() {
+    //     GUI.Label(new Rect(10, offset * 4, 100, 20), string.Format("Distance: {0}", distance));
+    //     GUI.Label(new Rect(10, offset * 5, 1000, 20), string.Format("My vel: {0}", myVel));
+    //     GUI.Label(new Rect(10, offset * 6, 1000, 20), string.Format("Target vel: {0}", targVel));
+    // }
 
     //first-order intercept using absolute target position
     public static Vector3 FirstOrderIntercept

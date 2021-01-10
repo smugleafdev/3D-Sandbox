@@ -13,6 +13,7 @@ public class ShootFireball : CastBehavior {
             GameObject instBullet = ObjectUtils.GetOrInstantiate(fireball, transform.position, transform.rotation);
             Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
             instBulletRigidBody.AddForce(forward * speed);
+            ObjectUtils.AddShotCount();
         }
     }
 

@@ -36,6 +36,9 @@ public class FPSController : MonoBehaviour {
     bool canMove = true;
     // bool doubleTapped = false;
 
+    float accuracy;
+    int shotsFired, shotsHit;
+
     void Start() {
         pauseMenu = GetComponent<PlayerPauseManager>();
         characterController = GetComponent<CharacterController>();
@@ -45,6 +48,8 @@ public class FPSController : MonoBehaviour {
     }
 
     void Update() {
+        CalculateEnemyAccuracy();
+
         if (Input.GetKeyDown(KeyCode.P)) {
             pauseMenu.HandlePause();
         }
@@ -132,6 +137,23 @@ public class FPSController : MonoBehaviour {
     public void DamagePlayer(int damage) {
         // currentHealth -= damage;
         ObjectUtils.ShowFlyText(flyText, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), $"-{damage}");
+    }
+
+    void CalculateEnemyAccuracy() {
+        shotsFired = ObjectUtils.shotCount;
+        shotsHit = ObjectUtils.shotsHit;
+
+        if (shotsFired > 0 && shotsHit > 0) {
+            accuracy = (float)shotsHit / (float)shotsFired * 100f;
+            Debug.Log(accuracy.ToString("F2"));
+        }
+    }
+
+    float offset = 12f;
+    private void OnGUI() {
+        GUI.Label(new Rect(10, offset * 1, 100, 20), $"Shots fired: {shotsFired}");
+        GUI.Label(new Rect(10, offset * 2, 100, 20), $"Shots hit: {shotsHit}");
+        GUI.Label(new Rect(10, offset * 3, 1000, 20), $"Accuracy: {accuracy.ToString("F2")}%");
     }
 
     // Double tap example here in case I forget and need it later
