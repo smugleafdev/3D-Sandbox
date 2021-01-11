@@ -61,4 +61,11 @@ public class EnemyBehaviorManager : MonoBehaviour {
         // WIP don't look //Physics.RaycastAll(transform.position, (target.position - transform.position), lookRange, playerMask).Length > 0;
         // TODO: targetPerceived = nothing in the way of a shot allowed except other players
     }
+
+    // private void OnDrawGizmos() {
+    //     Gizmos.color = Color.yellow;
+    //     Gizmos.DrawWireSphere(transform.position, lookRange);
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawWireSphere(transform.position, attackRange);
+    // }
 }

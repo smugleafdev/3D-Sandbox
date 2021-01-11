@@ -31,4 +31,18 @@ public static class ObjectUtils {
 
         return Color.white;
     }
+
+    public static int shotsFired, shotsHit;
+
+    public static void AddShotCount() {
+        shotsFired++;
+    }
+
+    public static void AddShotHit() {
+        shotsHit++;
+    }
+
+    public static void SubtractBulletCollision() {
+        shotsFired -= 2;
+    }
 }

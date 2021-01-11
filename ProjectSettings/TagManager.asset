@@ -13,6 +13,7 @@ TagManager:
   - PlayerBody
   - BulletPlayer
   - BulletEnemy
+  - Emitter
   layers:
   - Default
   - TransparentFX

@@ -138,7 +138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce62d57d64175445a91d5a1df079305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObj: {fileID: 0}
   emitter: {fileID: 8007556993767083582, guid: 2edb41fa66244014fa5f38b0392cd262, type: 3}
 --- !u!1 &7579955060354718716
 GameObject:
@@ -208,7 +207,7 @@ MonoBehaviour:
   turnSpeed: 3
   attackSpeed: 3
   lookRange: 30
-  attackRange: 30
+  attackRange: 20
 --- !u!54 &4694178694562551241
 Rigidbody:
   m_ObjectHideFlags: 0
