@@ -3,15 +3,14 @@
 public class EnemyAttackManager : MonoBehaviour {
 
     Transform target;
-    Vector3 targetCurrentPos, emitterMuzzlePosition;
+    Vector3 targetCurrentPos, emitterMuzzlePosition; // declared here for debugging
     Vector3 targetLastPosition, emitterMuzzleLastPosition;
     Vector3 targetVelocity, emitterVelocity;
     Vector3 targetPredictedFuturePosition;
-    float bulletScalar = 10f;
+    float bulletScalar = 10f; // TODO: Set up shoot speed so this can be calculated dynamically
     [SerializeField] GameObject emitter;
     Transform emitterMuzzle;
     CastBehavior castScript;
-
 
     void Start() {
         GameObject emitterInstance = GameObject.Instantiate(emitter, transform.position, transform.rotation);
@@ -35,10 +34,10 @@ public class EnemyAttackManager : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        CalculateShit();
+        CalculateAimTargetPrediction();
     }
 
-    void CalculateShit() {
+    void CalculateAimTargetPrediction() {
         targetCurrentPos = new Vector3(target.position.x, target.position.y + 1f, target.position.z);
         emitterMuzzlePosition = emitterMuzzle.position;
 
@@ -65,7 +64,7 @@ public class EnemyAttackManager : MonoBehaviour {
     }
 
     // TODO: Clamp aim X/Z to platform edges
-    // Clamp Y axis - how exactly? I dunno. Maybe to platform bottom vs 7ft? Maybe track player's max height all the time
+    // Clamp Y axis - how exactly? I dunno. Maybe to platform bottom vs 7ft? Maybe track player's max height all the time and set that as the max
 
     float AimAhead(Vector3 delta, Vector3 vr, float muzzleV) {
         // Quadratic equation coefficients a*t^2 + b*t + c = 0
@@ -83,14 +82,14 @@ public class EnemyAttackManager : MonoBehaviour {
         }
     }
 
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(emitterMuzzlePosition, 0.05f);
-        Gizmos.DrawWireCube(targetPredictedFuturePosition, new Vector3(0.1f, 0.1f, 0.1f));
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(targetCurrentPos, 0.05f);
-        // Gizmos.DrawWireCube(target.position, new Vector3(0.1f, 0.1f, 0.1f));
-    }
+    // private void OnDrawGizmos() {
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawSphere(emitterMuzzlePosition, 0.05f);
+    //     Gizmos.DrawWireCube(targetPredictedFuturePosition, new Vector3(0.1f, 0.1f, 0.1f));
+    //     Gizmos.color = Color.blue;
+    //     Gizmos.DrawWireSphere(targetCurrentPos, 0.05f);
+    //     // Gizmos.DrawWireCube(target.position, new Vector3(0.1f, 0.1f, 0.1f));
+    // }
 
     // float offset = 12f;
 
