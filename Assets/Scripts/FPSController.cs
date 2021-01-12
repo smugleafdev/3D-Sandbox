@@ -141,13 +141,15 @@ public class FPSController : MonoBehaviour {
 
     void CalculateEnemyAccuracy() {
         bool printLine = false;
-        if (shotsFired != ObjectUtils.shotsFired || shotsHit != ObjectUtils.shotsHit) printLine = true;
+        if (shotsFired != ObjectUtils.shotsFired || shotsHit != ObjectUtils.shotsHit) {
+            printLine = true;
+        }
+
         shotsFired = ObjectUtils.shotsFired;
         shotsHit = ObjectUtils.shotsHit;
 
         if (shotsFired > 0 && shotsHit > 0) {
             accuracy = (float)shotsHit / (float)shotsFired * 100f;
-            Debug.Log(accuracy.ToString("F2"));
             if (printLine) {
                 Debug.Log(accuracy.ToString("F2"));
             }

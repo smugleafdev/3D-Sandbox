@@ -19,10 +19,14 @@ public class EnemySpawner : MonoBehaviour {
 
     void SpawnEnemy() {
         if (enemyPrefab != null) {
-            Vector3 pos = transform.position;
-            // pos.y += 4;
-            GameObject enemy = GameObject.Instantiate(enemyPrefab, pos, transform.rotation);
-            enemy.transform.SetParent(transform.parent);
+            RaycastHit hit;
+            Ray ray = new Ray(transform.position, Vector3.down);
+
+            if (Physics.Raycast(ray, out hit)) {
+                GameObject enemy = GameObject.Instantiate(enemyPrefab, hit.point, transform.rotation);
+                enemy.transform.SetParent(transform.parent);
+                Debug.Log("Spawning");
+            }
         }
     }
 
