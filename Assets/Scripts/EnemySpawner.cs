@@ -9,6 +9,8 @@ public class EnemySpawner : MonoBehaviour {
         hasSpawned = false;
     }
 
+    // TODO: Bug here. If player is within the collision sphere when teleported (by level reset)
+    // it triggers instantly, even though it should still be inactive (player position reset first, then spawners set)
     private void OnTriggerEnter(Collider other) {
         if (!hasSpawned && other.tag == "Player") {
             hasSpawned = true;
@@ -30,13 +32,14 @@ public class EnemySpawner : MonoBehaviour {
         }
     }
 
-    // private void OnDrawGizmos() {
-    //     Gizmos.color = Color.green;
-    //     Gizmos.DrawWireSphere(transform.position, 15f);
-    // }
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, 1f);
+    }
 
     void OnDrawGizmosSelected() {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, 5f);
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - 10f, transform.position.z));
+    }
     }
 }

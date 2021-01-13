@@ -151,7 +151,7 @@ public class FPSController : MonoBehaviour {
         if (shotsFired > 0 && shotsHit > 0) {
             accuracy = (float)shotsHit / (float)shotsFired * 100f;
             if (printLine) {
-                Debug.Log(accuracy.ToString("F2"));
+                // Debug.Log(accuracy.ToString("F2"));
             }
         }
     }

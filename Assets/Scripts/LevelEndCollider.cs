@@ -2,7 +2,6 @@
 
 public class LevelEndCollider : MonoBehaviour {
 
-    [SerializeField] GameObject player, platform;
     LevelController levelController;
 
     private void Start() {
@@ -11,17 +10,12 @@ public class LevelEndCollider : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
-            ResetLevel();
+            levelController.ResetLevel();
         }
     }
 
-    void ResetLevel() {
-        ResetPlatformAndPlayer();
-        levelController.ResetLevel();
-    }
-
-    void ResetPlatformAndPlayer() {
-        player.transform.position = new Vector3(24.62f, 2.4f, 0);
-        platform.transform.position = new Vector3(24.62f, 2.4f, 0);
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(transform.position, new Vector3(1f, 10f, 25f));
     }
 }

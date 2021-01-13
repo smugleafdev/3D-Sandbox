@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour {
 
+    [SerializeField] GameObject player, platform;
     List<GameObject> spawners = new List<GameObject>();
 
     private void Start() {
@@ -10,8 +11,14 @@ public class LevelController : MonoBehaviour {
     }
 
     public void ResetLevel() {
+        ResetPlatformAndPlayer();
         DespawnEnemies();
         ResetSpawners();
+    }
+
+    void ResetPlatformAndPlayer() {
+        player.transform.position = new Vector3(24.62f, 2.4f, 0);
+        platform.transform.position = new Vector3(24.62f, 2.4f, 0);
     }
 
     private void DespawnEnemies() {
