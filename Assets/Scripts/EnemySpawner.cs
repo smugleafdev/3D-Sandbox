@@ -27,7 +27,6 @@ public class EnemySpawner : MonoBehaviour {
             if (Physics.Raycast(ray, out hit)) {
                 GameObject enemy = GameObject.Instantiate(enemyPrefab, hit.point, transform.rotation);
                 enemy.transform.SetParent(transform.parent);
-                Debug.Log("Spawning");
             }
         }
     }

@@ -122,6 +122,7 @@ public class FPSController : MonoBehaviour {
     }
 
     void HandleSpells() {
+        // TODO: BUG!!! Holding shift prevents equip slot input. This may be irrelevant for VR.
         int currentEquipSlot = equippedSlot;
         equippedSlot = equipKeyCodes.FirstOrDefault(ekc => Input.GetKeyDown(ekc.keyCode))?.keyInt ?? -1;
         if (currentEquipSlot != equippedSlot && equippedSlot != -1) {
