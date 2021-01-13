@@ -41,5 +41,4 @@ public class EnemySpawner : MonoBehaviour {
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - 10f, transform.position.z));
     }
-    }
 }
