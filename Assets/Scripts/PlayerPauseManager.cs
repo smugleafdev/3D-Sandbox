@@ -26,7 +26,7 @@ public class PlayerPauseManager : MonoBehaviour {
     }
 
     public void Reload() {
-        SceneManager.LoadScene("random test");
+        SceneManager.LoadScene("Sandbox Scene");
     }
 
     public void Quit() {
