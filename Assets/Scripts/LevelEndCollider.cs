@@ -10,7 +10,7 @@ public class LevelEndCollider : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
-            levelController.ResetLevel();
+            levelController.ResetLevel(other.gameObject);
         }
     }
 

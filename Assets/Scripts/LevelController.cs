@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour {
 
-    [SerializeField] GameObject player, platform;
+    [SerializeField] GameObject platform;
+    GameObject player;
     List<GameObject> spawners = new List<GameObject>();
 
     private void Start() {
         spawners = FindChildObjectsWithTag("EnemySpawner");
     }
 
-    public void ResetLevel() {
+    public void ResetLevel(GameObject playerCollided) {
+        player = playerCollided;
         ResetPlatformAndPlayer();
         DespawnEnemies();
         ResetSpawners();
