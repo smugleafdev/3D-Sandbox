@@ -17,6 +17,9 @@ public class DespawnProjectile : MonoBehaviour {
         } else if (tag == "Player") {
             collision.gameObject.GetComponentInParent<FPSController>().DamagePlayer(damage);
             ObjectUtils.AddShotHit();
+        } else if (tag == "Shield") {
+            collision.gameObject.GetComponent<DomeShield>().BlockHit(damage);
+            ObjectUtils.AddShotHit();
         } else if (tag == "BulletEnemy" && transform.gameObject.tag == "BulletEnemy") {
             ObjectUtils.SubtractBulletCollision();
         }

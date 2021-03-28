@@ -157,12 +157,12 @@ public class FPSController : MonoBehaviour {
         }
     }
 
-    float offset = 12f;
-    private void OnGUI() {
-        GUI.Label(new Rect(10, offset * 1, 100, 20), $"Shots fired: {shotsFired}");
-        GUI.Label(new Rect(10, offset * 2, 100, 20), $"Shots hit: {shotsHit}");
-        GUI.Label(new Rect(10, offset * 3, 1000, 20), $"Accuracy: {accuracy.ToString("F2")}%");
-    }
+    // float offset = 12f;
+    // private void OnGUI() {
+    //     GUI.Label(new Rect(10, offset * 1, 100, 20), $"Shots fired: {shotsFired}");
+    //     GUI.Label(new Rect(10, offset * 2, 100, 20), $"Shots hit: {shotsHit}");
+    //     GUI.Label(new Rect(10, offset * 3, 1000, 20), $"Accuracy: {accuracy.ToString("F2")}%");
+    // }
 
     // Double tap example here in case I forget and need it later
     // if (Input.GetKeyDown(KeyCode.Escape) {

@@ -15,6 +15,7 @@ TagManager:
   - BulletEnemy
   - Emitter
   - EnemySpawner
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - Enemies
   - PlayerProjectiles
   - EnemyProjectiles
-  - 
+  - TankUI
   - 
   - 
   - 
