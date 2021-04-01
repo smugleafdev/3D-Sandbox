@@ -20,5 +20,7 @@ public class StartLevel : MonoBehaviour {
                 ObjectPool.StashObjectByTag(GameObject.Instantiate(pair.prefab));
             });
         });
+
+        // Planet p = new Planet();
     }
 }

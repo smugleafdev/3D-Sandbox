@@ -31,9 +31,10 @@ public class PlayerTankController : MonoBehaviour {
                 // Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow, 3f);
                 // Debug.Log("Did Hit");
 
-                SetShieldPosition(hit.point);
-
-                PlaceShield();
+                if (hit.point.y >= 0) { // Remove if you ever make the sphere just a dome
+                    SetShieldPosition(hit.point);
+                    PlaceShield();
+                }
             }
         }
     }
