@@ -37,7 +37,6 @@ public class Planet : MonoBehaviour {
 
                 // paneObject.transform.parent = m_PlanetMesh.transform;
                 paneObject.transform.parent = parent.transform;
-                parent.AddComponent<Dome>();
             }
         }
     }

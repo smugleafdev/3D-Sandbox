@@ -77,15 +77,10 @@ public class DomeShield : MonoBehaviour {
             pane.ToggleActivation(hitList.Contains(pane.gameObject));
         }
 
-        // do overlap sphere
-        // get colliding panels
-        // collidingPanels = overlapColliders.Select(coll => coll.gameObject.GetComponentInParent<Pane>())
-
-        // foreach panel {
-        //  panel.setActive(collidingPanels.Contains(panel))
-        //}
-
         if (currentSize <= 0) {
+            foreach (Pane pane in panes) {
+                pane.ToggleActivation(false);
+            }
             Destroy(gameObject);
         }
     }
