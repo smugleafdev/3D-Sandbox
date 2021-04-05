@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1503566242619710664}
   - component: {fileID: 4543025772296551766}
   - component: {fileID: 5126891683104401122}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ShieldSphere
-  m_TagString: Shield
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,4 +108,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508ca27129aa76242bdc1e44ff401969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldDeathTime: 2

@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class DomeShield : MonoBehaviour {
 
+    GameObject paneParent;
+    Pane[] panes;
     // [SerializeField] float shieldGrowthTime = 2f;
     float timer, debugTimerGrow, debugTimerShrink;
     float currentSize;
@@ -29,6 +32,9 @@ public class DomeShield : MonoBehaviour {
         targetPosition = Vector3.zero;
 
         blockedDamage = 0;
+
+        paneParent = GameObject.FindGameObjectWithTag("Plane");
+        panes = paneParent.transform.GetComponentsInChildren<Pane>();
     }
 
     void Update() {
@@ -59,6 +65,26 @@ public class DomeShield : MonoBehaviour {
             }
         }
 
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, currentSize / 2, LayerMask.GetMask("TankUI"));
+        List<GameObject> hitList = new List<GameObject>();
+        foreach (Collider hit in hitColliders) {
+            hitList.Add(hit.transform.parent.gameObject);
+        }
+
+        // paneParent.GetComponent<Dome>().hitList = hitList;
+
+        foreach (Pane pane in panes) {
+            pane.ToggleActivation(hitList.Contains(pane.gameObject));
+        }
+
+        // do overlap sphere
+        // get colliding panels
+        // collidingPanels = overlapColliders.Select(coll => coll.gameObject.GetComponentInParent<Pane>())
+
+        // foreach panel {
+        //  panel.setActive(collidingPanels.Contains(panel))
+        //}
+
         if (currentSize <= 0) {
             Destroy(gameObject);
         }
@@ -86,14 +112,28 @@ public class DomeShield : MonoBehaviour {
         isDying = false;
     }
 
-    public void BlockHit(int damage) {
-        blockedDamage = damage;
-    }
+    // public void BlockHit(int damage) {
+    //     blockedDamage = damage;
+    // }
 
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, currentSize / 2);
-    }
+    // private void OnTriggerEnter(Collider collision) {
+    // void OnCollisionEnter(Collision collision) {
+    //     if (collision.gameObject.layer == LayerMask.NameToLayer("TankUI")) {
+    //         collision.gameObject.GetComponentInParent<Pane>().ActivateExterior();
+    //     }
+    // }
+
+    // // private void OnTriggerExit(Collider collision) {
+    // private void OnCollisionExit(Collision collision) {
+    //     if (collision.gameObject.layer == LayerMask.NameToLayer("TankUI")) {
+    //         collision.gameObject.GetComponentInParent<Pane>().DeactivateExterior();
+    //     }
+    // }
+
+    // private void OnDrawGizmos() {
+    //     Gizmos.color = Color.cyan;
+    //     Gizmos.DrawWireSphere(transform.position, currentSize / 2);
+    // }
 
     float offset = 12f;
     private void OnGUI() {

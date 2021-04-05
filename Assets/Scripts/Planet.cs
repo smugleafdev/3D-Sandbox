@@ -5,6 +5,10 @@ using UnityEngine;
 public class Planet : MonoBehaviour {
     public Material m_Material;
     GameObject m_PlanetMesh;
+    [SerializeField]
+    GameObject panePrefab;
+    [SerializeField]
+    GameObject parent;
 
     List<Polygon> m_Polygons;
     List<Vector3> m_Vertices;
@@ -12,32 +16,30 @@ public class Planet : MonoBehaviour {
     public void Start() {
         InitAsIcosohedron();
         Subdivide(3);
-        // Domify();
-        GenerateMesh();
-
+        // GenerateMesh();
         Domify();
     }
 
     public void Domify() {
+        int id = 1;
+
         foreach (Polygon poly in m_Polygons) {
-            List<Vector3> vectors = new List<Vector3>();
-            foreach (int i in poly.m_Vertices) {
-                vectors.Add(m_Vertices[i]);
+            Vector3 a = m_Vertices[poly.m_Vertices[0]];
+            Vector3 b = m_Vertices[poly.m_Vertices[1]];
+            Vector3 c = m_Vertices[poly.m_Vertices[2]];
+
+            if (a.y > 0 || b.y > 0 || c.y > 0) {
+                GameObject paneObject = GameObject.Instantiate(panePrefab, transform.position, transform.rotation);
+                // paneObject.transform.localScale = new Vector3(10, 10, 10);
+                paneObject.GetComponent<Pane>().InitPane(a, b, c, id);
+                paneObject.name = $"Pane {id}";
+                id++;
+
+                // paneObject.transform.parent = m_PlanetMesh.transform;
+                paneObject.transform.parent = parent.transform;
+                parent.AddComponent<Dome>();
             }
-
-            // Plane plane = new Plane();
-            // plane.Set3Points(vectors[0], vectors[1], vectors[2]);
-
-
-            // GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            // sphere.transform.position = vector;
         }
-
-        // foreach (Vector3 vector in m_Vertices)
-        // {
-        //     GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        //     sphere.transform.position = vector;
-        // }
     }
 
     public void InitAsIcosohedron() {
@@ -120,40 +122,6 @@ public class Planet : MonoBehaviour {
         }
     }
 
-    // public void Domify()
-    // {
-    //     var midPointCache = new Dictionary<int, int>();
-
-    //     for (int i = 0; i < 1; i++)
-    //     {
-    //         var newPolys = new List<Polygon>();
-    //         foreach (var poly in m_Polygons)
-    //         {
-    //             int a = poly.m_Vertices[0];
-    //             int b = poly.m_Vertices[1];
-    //             int c = poly.m_Vertices[2];
-
-    //             // Use GetMidPointIndex to either create a
-    //             // new vertex between two old vertices, or
-    //             // find the one that was already created.
-
-    //             int ab = GetMidPointIndex(midPointCache, a, b);
-    //             int bc = GetMidPointIndex(midPointCache, b, c);
-    //             int ca = GetMidPointIndex(midPointCache, c, a);
-
-    //             // Create the four new polygons using our original
-    //             // three vertices, and the three new midpoints.
-    //             newPolys.Add(new Polygon(a, ab, ca));
-    //             newPolys.Add(new Polygon(b, bc, ab));
-    //             newPolys.Add(new Polygon(c, ca, bc));
-    //             newPolys.Add(new Polygon(ab, bc, ca));
-    //         }
-    //         // Replace all our old polygons with the new set of
-    //         // subdivided ones.
-    //         m_Polygons = newPolys;
-    //     }
-    // }
-
     public int GetMidPointIndex(Dictionary<int, int> cache, int indexA, int indexB) {
         // We create a key out of the two original indices
         // by storing the smaller index in the upper two bytes
@@ -197,6 +165,7 @@ public class Planet : MonoBehaviour {
             Destroy(m_PlanetMesh);
 
         m_PlanetMesh = new GameObject("Planet Mesh");
+        // m_PlanetMesh.transform.localScale = new Vector3(10, 10, 10);
 
         MeshRenderer surfaceRenderer = m_PlanetMesh.AddComponent<MeshRenderer>();
         surfaceRenderer.material = m_Material;

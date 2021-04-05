@@ -6,7 +6,5 @@ public class Polygon {
 
     public Polygon(int a, int b, int c) {
         m_Vertices = new List<int>() { a, b, c };
-
-
     }
 }

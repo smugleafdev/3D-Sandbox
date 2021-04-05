@@ -837,7 +837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &452910962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2316,7 +2316,7 @@ GameObject:
   - component: {fileID: 982746271}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Plane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3478,7 +3478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1404052294
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4044,6 +4044,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 0d80d08ac0b16bc4f8c90e83ca3df2a3, type: 2}
+  panePrefab: {fileID: 3412259201330566051, guid: e2aecd33593620647831db757893f882, type: 3}
+  parent: {fileID: 982746270}
 --- !u!4 &1773933967 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2621028833961397181, guid: 63a3c41c0014bb14696e2112721c0f7a, type: 3}

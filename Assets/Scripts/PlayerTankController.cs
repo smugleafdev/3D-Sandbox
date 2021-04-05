@@ -26,8 +26,8 @@ public class PlayerTankController : MonoBehaviour {
     void HandleActions() {
         if (Input.GetMouseButton(0)) {
             LayerMask mask = LayerMask.GetMask("TankUI");
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 20f, mask)) {
+            // RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, 20f, mask)) {
                 // Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow, 3f);
                 // Debug.Log("Did Hit");
 

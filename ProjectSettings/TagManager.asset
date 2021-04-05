@@ -16,6 +16,7 @@ TagManager:
   - Emitter
   - EnemySpawner
   - Shield
+  - Plane
   layers:
   - Default
   - TransparentFX
@@ -31,8 +32,8 @@ TagManager:
   - PlayerProjectiles
   - EnemyProjectiles
   - TankUI
-  - 
-  - 
+  - TankShield
+  - TankShieldSphere
   - 
   - 
   - 
