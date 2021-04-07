@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class DomeShield : MonoBehaviour {
 
+    [SerializeField]
+    bool showSphere = false;
+
     GameObject paneParent;
     Pane[] panes;
     // [SerializeField] float shieldGrowthTime = 2f;
     float timer, debugTimerGrow, debugTimerShrink;
     float currentSize;
-    float finalSize = 1.5f;
+    float finalSize = 1.50f;
+    float growthRate = 1f;
     bool isDying;
 
     float journeyTime = 10f;
@@ -41,10 +45,10 @@ public class DomeShield : MonoBehaviour {
         timer += Time.deltaTime;
 
         if (!isDying && currentSize < finalSize) {
-            currentSize += Time.deltaTime;
+            currentSize += Time.deltaTime * growthRate;
             debugTimerGrow += Time.deltaTime;
         } else if (isDying && currentSize > 0 && !isSlerping) {
-            currentSize -= Time.deltaTime;
+            currentSize -= Time.deltaTime * growthRate;
             debugTimerShrink += Time.deltaTime;
         }
 
@@ -125,10 +129,12 @@ public class DomeShield : MonoBehaviour {
     //     }
     // }
 
-    // private void OnDrawGizmos() {
-    //     Gizmos.color = Color.cyan;
-    //     Gizmos.DrawWireSphere(transform.position, currentSize / 2);
-    // }
+    private void OnDrawGizmos() {
+        if (showSphere) {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(transform.position, currentSize / 2);
+        }
+    }
 
     float offset = 12f;
     private void OnGUI() {

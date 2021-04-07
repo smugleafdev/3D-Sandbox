@@ -29,6 +29,9 @@ public class Planet : MonoBehaviour {
             Vector3 c = m_Vertices[poly.m_Vertices[2]];
 
             if (a.y > 0 || b.y > 0 || c.y > 0) {
+                a.y = Mathf.Max(0, a.y);
+                b.y = Mathf.Max(0, b.y);
+                c.y = Mathf.Max(0, c.y);
                 GameObject paneObject = GameObject.Instantiate(panePrefab, transform.position, transform.rotation);
                 // paneObject.transform.localScale = new Vector3(10, 10, 10);
                 paneObject.GetComponent<Pane>().InitPane(a, b, c, id);
